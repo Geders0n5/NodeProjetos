@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="estilo.css">
+
+<body id="corpo">
+    <div>
+        <h1 class="alert alert-primary">Vizualização dos Posts</h1>
+        <a href="/cadastroPost"><button type="button" class="btn btn-primary">Cadastrar</button></a>
+        <a href="/"><button type="button" class="btn btn-danger">Sair</button></a>
+        <div id="centro">
+            <h1>Lista de Posts: </h1>
+            <hr>
+            <teste></teste>
+            {{#each posts}}
+            <h2>{{dataValues.id}} - {{dataValues.titulo}}</h2>
+            <p>{{dataValues.conteudo}}</p>
+            <button type="button" class="btn btn-warning" id="alterar" data-toggle="modal"
+                data-target="#modalAlterar{{dataValues.id}}">Alterar</button>
+            <a href="/deletar/{{dataValues.id}}"><button type="button" class="btn btn-danger">Deletar</button></a>
+            <hr>
+
+            <!--_______MODAL ALTERAR_________________________________________________________________________________________________-->
+
+            <div class="modal fade" id="modalAlterar{{dataValues.id}}" tabindex="-1" role="dialog" aria-hidden="true"
+                aria-labelledby="modalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Atualizar Post - ID: {{dataValues.id}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/atualizaPost/{{dataValues.id}}" method="POST">
+                                <div class="form-group col-8">
+                                    <label for="idMod">ID: </label>
+                                    <input type="text" name="idMod" id="idMod" value="{{dataValues.id}}" disabled>
+                                </div>
+                                <div class="form-group col-8">
+                                    <label for="iTituloMod">Titulo: </label>
+                                    <input type="text" id="iTituloMod" name="tituloMod" class="form-control"
+                                        value="{{dataValues.titulo}}" />
+                                </div>
+                                <div class="form-group col-8">
+                                    <label for="iConteudoMod">Conteudo: </label>
+                                    <textarea id="iConteudoMod" name="conteudoMod"
+                                        class="form-control">{{dataValues.conteudo}}</textarea>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" id="salvarMudancas" class="btn btn-primary">Salvas mudanças</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--_______/MODAL ALTERAR________________________________________________________________________________________________-->
+            {{/each}}
+        </div>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>

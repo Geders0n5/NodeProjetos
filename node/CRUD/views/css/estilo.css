@@ -1,0 +1,26 @@
+body#corpo{
+    background-color: rgb(217, 226, 255);
+}
+
+div.principal{
+    background-color: rgb(230, 235, 253);
+    padding: 2px;
+    margin: 2px;
+}
+
+input.form-control{
+    margin-bottom: 5pt;
+}
+
+button {
+    margin-top: 5pt;
+    margin-right: 5pt;
+}
+
+div#validar{
+    display: inline-block;
+}
+
+div#resetar{
+    display: inline-block;
+}
